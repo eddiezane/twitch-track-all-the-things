@@ -7,7 +7,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   setInterval(() => {
-    console.log('tick')
     navigator.geolocation.getCurrentPosition(pos => {
       const { latitude: lat, longitude: lng } = pos.coords
       socket.emit('updateLocation', { lat, lng })
