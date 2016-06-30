@@ -24,10 +24,7 @@ io.on('connection', socket => {
   })
 
   socket.on('updateLocation', pos => {
-    if (locationMap.has(socket.id)) {
-      locationMap.set(socket.id, pos)
-      console.log(socket.id, pos)
-    }
+    locationMap.set(socket.id, pos)
   })
 
   socket.on('requestLocations', () => {

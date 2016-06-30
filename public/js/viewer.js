@@ -5,21 +5,18 @@ document.addEventListener('DOMContentLoaded', () => {
   const socket = io('/')
 
   socket.on('locationsUpdate', locations => {
-    console.log(locations)
+    markers.forEach((marker, id) => {
+      marker.setMap(null)
+      markers.delete(id)
+    })
+
     locations.forEach(([id, position]) => {
-      let marker = null
       if (position.lat && position.lng) {
-        marker = new google.maps.Marker({
+        const marker = new google.maps.Marker({
           position,
           map,
           title: id
         })
-      }
-
-      if (markers.has(id)) {
-        const oldMarker = markers.get(id)
-        oldMarker.setMap(null)
-        markers.delete(id)
         markers.set(id, marker)
       }
     })
