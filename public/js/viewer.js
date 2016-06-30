@@ -14,8 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (position.lat && position.lng) {
         const marker = new google.maps.Marker({
           position,
-          map,
-          title: id
+          map
         })
         markers.set(id, marker)
       }
@@ -32,7 +31,7 @@ function initMap() {
     const { latitude: lat, longitude: lng } = pos.coords
     map = new google.maps.Map(document.getElementById('map'), {
       center: { lat, lng },
-      zoom: 8
+      zoom: 2
     })
   }, err => {
     console.error(err)

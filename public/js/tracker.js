@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
   const socket = io('/')
-  socket.emit('registerTracker')
 
   const positionOptions = {
     enableHighAccuracy: true,

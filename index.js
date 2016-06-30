@@ -19,10 +19,6 @@ app.get('/', (req, res) => {
 })
 
 io.on('connection', socket => {
-  socket.on('registerTracker', () => {
-    locationMap.set(socket.id, { lat: null, lng: null })
-  })
-
   socket.on('updateLocation', pos => {
     locationMap.set(socket.id, pos)
   })
